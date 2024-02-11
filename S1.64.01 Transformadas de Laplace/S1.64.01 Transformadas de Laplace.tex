@@ -11,6 +11,34 @@
 
 \newpage
 
+\setcounter{section}{1}
+\section{\texorpdfstring{\(f(t) = c\)}{f (t) = c}}
+
+Calculamos la transformada de Laplace de \(f(t) = c\):
+\begin{align*}
+    \mathcal{L}\{c\}&=\int_0^{\infty}e^{-st}(c)\\
+    &=\int_0^{\infty}ce^{-st}\\
+    &=c\int_0^{\infty}e^{-st}\\
+    &=\lim_{b\to\infty}c\int_0^be^{-st}\ dt
+\end{align*}
+Sustiuimos con \(u=-st \implies du =-s\ dt\), obteniendo:
+\begin{align*}
+	&=\lim_{b\to\infty}-\frac{c}{s}\left[\int_0^{-sb}  e^u\ du\right] \\
+	&=-\frac{c}{s}\lim_{b\to\infty}\left[e^u\big|_0^{-sb}  \right]\\
+	&=-\frac{c}{s}\lim_{b\to\infty}\left[e^{-sb}-e^{0}\right]\\
+	&=-\frac{c}{s} \left[ \lim_{b\to\infty} e^{-sb} - 1 \right]
+\end{align*}
+Cuando \(s > 0 \implies -s < 0\), por lo que podemos escribir:
+\begin{align*}
+	&= -\frac{c}{s} \left[ \lim_{b\to-\infty} e^{b} - 1 \right] \\
+	&= -\frac{c}{s} \left[ 0 - 1 \right] \\
+	&= \frac{c}{s}
+\end{align*}
+Así, finalmente:
+\[
+\mathcal{L}\{c\}=\frac{c}{s}
+\]
+
 \setcounter{section}{7}
 \section{\texorpdfstring{\(f(t)=\cos(t)\)}{f (t) = cos (t)}}
 
