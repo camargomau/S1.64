@@ -16,11 +16,42 @@
 
 Calculamos la transformada de Lagrange de \(f(t) = \cos(t)\):
 \begin{align*}
-	\mathcal{L}\{c\} &= \int_{0}^{\infty} e^{-st} \cos(t) \\
-	&=
+	\mathcal{L}\{\cos (t)\} &= \int_{0}^{\infty} e^{-st} \cos(t)\ dt \\
+	&= \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos(t)\ dt
 \end{align*}
-
-\section{\texorpdfstring{\(f(t)=\sin(at)\)}{f (t) = sin (at)}}
+Integrando por partes, utilizando \(u = \cos(t) \implies du = -\sin(t)\ dt\) y \(dv = e^{-st}\ dt \implies v = -\frac{1}{s} e^{-st}\), obtenemos:
+\begin{align*}
+	&= \lim_{b \to \infty} \left[ \left. \frac{-\cos (t) e^{-st}}{s} \right|_{0}^{b} - \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right] \\
+	&= \lim_{b \to \infty} \left[ - \frac{\cos (b) e^{-sb}}{s} + \frac{\cos (0) e^{0}}{s} \right] - \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right] \\
+	&= \frac{1}{s} - \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right] \\
+	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (t) \ dt
+\end{align*}
+Una vez más, integrando por partes con \(u = \sin (t) \implies du = \cos (t)\ dt\) y \(dv = e^{-st}\ dt \implies v = -\frac{1}{s} e^{-st}\), tenemos:
+\begin{align*}
+	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \left[ \left. \frac{-\sin (t) e^{-st}}{s} \right|_{0}^{b} + \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \\
+	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \left[ - \frac{\sin (b) e^{-sb}}{s} + \frac{\sin (0) e^{0}}{s} \right] + \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \\
+	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \\
+	&= \frac{1}{s} - \frac{1}{s^{2}} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt
+\end{align*}
+Observemos que:
+\begin{align*}
+	\lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt &= \frac{1}{s} - \frac{1}{s^{2}}\lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt
+\end{align*}
+Estableciendo \(a = \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt\), tenemos:
+\begin{align*}
+	a &= \frac{1}{s} - \frac{1}{s ^{2}} a \\
+	\implies a + \frac{1}{s ^{2}} a &= \frac{1}{s} \\
+	\implies a \left(\frac{1}{s ^{2}} + 1 \right) &= \frac{1}{s} \\
+	\implies a \left( \frac{1+s ^{2}}{s ^{2}} \right) &= \frac{1}{s} \\
+	\implies a &= \frac{s ^{2}}{s(1+s ^{2})} \\
+	\implies a &= \frac{s}{s ^{2} + 1} \\
+	\implies \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt &= \frac{s}{s ^{2} + 1} \\
+	\implies \int_{0}^{\infty} e^{-st} \cos (t) \ dt &= \frac{s}{s ^{2} + 1}
+\end{align*}
+Por lo tanto, finalmente:
+\[
+	\mathcal{L}\{\cos (t)\} = \frac{s}{s ^{2} + 1}
+\]
 
 
 \setcounter{section}{10}
