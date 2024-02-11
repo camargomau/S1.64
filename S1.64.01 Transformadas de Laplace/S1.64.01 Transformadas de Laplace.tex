@@ -57,6 +57,32 @@ Por lo tanto, finalmente:
 \setcounter{section}{10}
 \section{\texorpdfstring{\(f(t)=e^{4t}\)}{f (t) = e (4t) }}
 
+Calculamos la transformada de Lagrange de \(f(t) = e^{4t}\):
+\begin{align*}
+	\mathcal{L}\{e^{4t}\} &= \int_{0}^{\infty} e^{-st} e^{4t}\ dt \\
+	&= \int_{0}^{\infty} e^{(4-s)t} \ dt \\
+	&= \lim_{b \to \infty} \int_{0}^{b} e^{(4-s)t} \ dt
+\end{align*}
+Sustituyamos con \(u = (4-s) t \implies du = 4-s\ dt\):
+\begin{align*}
+	&= \frac{1}{4-s} \lim_{b \to \infty} \int_{0}^{(4-s)b} e^{u} \ du \\
+	&= \frac{1}{4-s} \lim_{b \to \infty} \left. \left( e^{u} \right)  \right|_{0}^{(4-s)b} \\
+	&= \frac{1}{4-s} \lim_{b \to \infty} \left( e^{(4-s)b} - e^{0} \right) \\
+	&= \frac{1}{4-s} \left[ \lim_{b \to \infty} e^{(4-s)b} - 1 \right]
+\end{align*}
+Cuando \(s > 4 \implies (4-s) < 0\), por lo que podemos escribir:
+\begin{align*}
+	&= \frac{1}{4-s} \left[ \lim_{b \to -\infty} e^{b} - 1 \right] \\
+	&= \frac{1}{4-s} (0 - 1) \\
+	&= \frac{1}{s-4}
+\end{align*}
+Así, finalmente obtenemos que:
+\[
+	\mathcal{L}\{e^{4t}\} = \frac{1}{s-4} \qquad s > 4
+\]
+
+
+
 
 \section{\texorpdfstring{\(f(t)=e^{-2t}\)}{f (t) = e (-2t)}}
 
