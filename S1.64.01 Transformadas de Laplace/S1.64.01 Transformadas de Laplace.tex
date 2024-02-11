@@ -2,7 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{../auxiliary/utilities/preamble}
 
-\newcommand{\titulo}{Transformadas de Lagrange}
+\newcommand{\titulo}{Transformadas de Laplace}
 \newcommand{\fecha}{11 de febrero de 2024}
 
 \begin{document}
@@ -14,7 +14,7 @@
 \setcounter{section}{7}
 \section{\texorpdfstring{\(f(t)=\cos(t)\)}{f (t) = cos (t)}}
 
-Calculamos la transformada de Lagrange de \(f(t) = \cos(t)\):
+Calculamos la transformada de Laplace de \(f(t) = \cos(t)\):
 \begin{align*}
 	\mathcal{L}\{\cos (t)\} &= \int_{0}^{\infty} e^{-st} \cos(t)\ dt \\
 	&= \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos(t)\ dt
@@ -57,7 +57,7 @@ Por lo tanto, finalmente:
 \setcounter{section}{10}
 \section{\texorpdfstring{\(f(t)=e^{4t}\)}{f (t) = e (4t) }}
 
-Calculamos la transformada de Lagrange de \(f(t) = e^{4t}\):
+Calculamos la transformada de Laplace de \(f(t) = e^{4t}\):
 \begin{align*}
 	\mathcal{L}\{e^{4t}\} &= \int_{0}^{\infty} e^{-st} e^{4t}\ dt \\
 	&= \int_{0}^{\infty} e^{(4-s)t} \ dt \\
@@ -83,7 +83,7 @@ Así, finalmente obtenemos que:
 
 \section{\texorpdfstring{\(f(t)=e^{-2t}\)}{f (t) = e (-2t)}}
 
-Calculamos la transformada de Lagrange de \(f(t) = e^{-2t}\):
+Calculamos la transformada de Laplace de \(f(t) = e^{-2t}\):
 \begin{align*}
 	\mathcal{L}\{e^{-2t}\} &= \int_{0}^{\infty} e^{-st} e^{-2t}\ dt \\
 	&= \int_{0}^{\infty} e^{(-2-s)t} \ dt \\
@@ -110,7 +110,7 @@ Así, finalmente obtenemos que:
 \setcounter{section}{13}
 \section{\texorpdfstring{\(f(t)=\sinh(3t)\)}{f (t) = sinh (3t)}}
 
-Calculamos la transformada de Lagrange de \(f(t) = \sinh(3t)\):
+Calculamos la transformada de Laplace de \(f(t) = \sinh(3t)\):
 \begin{align*}
 	\mathcal{L}\{\sinh(3t)\} &= \int_{0}^{\infty} e^{-st} \sinh(3t) \ dt
 \end{align*}
@@ -145,7 +145,7 @@ Así, finalmente:
 
 \section{\texorpdfstring{\(f(t)=\cosh(6t)\)}{f (t) = cosh (6t)}}
 
-Calculamos la transformada de Lagrange de \(f(t) = \cosh(6t)\):
+Calculamos la transformada de Laplace de \(f(t) = \cosh(6t)\):
 \[
 	\mathcal{L}\{\cosh(6t)\} = \int_{0}^{\infty} e^{-st} \cosh(6t) \ dt
 \]
@@ -180,7 +180,7 @@ Así, finalmente:
 \setcounter{section}{16}
 \section{\texorpdfstring{\(f(t)=\cosh(at)\)}{f (t) = cosh (at)}}
 
-Calculamos la transformada de Lagrange de \(f(t) = \cosh(at)\):
+Calculamos la transformada de Laplace de \(f(t) = \cosh(at)\):
 \[
 	\mathcal{L}\{\cosh(6t)\} = \int_{0}^{\infty} e^{-st} \cosh(at) \ dt
 \]
