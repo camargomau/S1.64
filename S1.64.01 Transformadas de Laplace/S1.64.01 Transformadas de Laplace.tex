@@ -145,7 +145,7 @@ Así, finalmente:
 
 \section{\texorpdfstring{\(f(t)=\cosh(6t)\)}{f (t) = cosh (6t)}}
 
-Caculamos la transformada de Lagrange de \(f(t) = \cosh(6t)\):
+Calculamos la transformada de Lagrange de \(f(t) = \cosh(6t)\):
 \[
 	\mathcal{L}\{\cosh(6t)\} = \int_{0}^{\infty} e^{-st} \cosh(6t) \ dt
 \]
@@ -177,11 +177,39 @@ Así, finalmente:
 	\mathcal{L}\{\cosh(6t)\} = \frac{s}{s ^{2} - 9}
 \]
 
-
 \setcounter{section}{16}
 \section{\texorpdfstring{\(f(t)=\cosh(at)\)}{f (t) = cosh (at)}}
 
-
-
+Calculamos la transformada de Lagrange de \(f(t) = \cosh(at)\):
+\[
+	\mathcal{L}\{\cosh(6t)\} = \int_{0}^{\infty} e^{-st} \cosh(at) \ dt
+\]
+Recordemos que \(\cosh(u) = \frac{1}{2} \left( e^{u} + e^{-u} \right) \), así que:
+\begin{align*}
+	&= \frac{1}{2} \int_{0}^{\infty} e^{-st} \left( e^{at} + e^{-at} \right)  \ dt \\
+	&= \frac{1}{2} \left[ \int_{0}^{\infty} e^{(a-s)t} + e^{(-a-s)t} \ dt \right] \\
+	&= \frac{1}{2} \left[ \int_{0}^{\infty} e^{(a-s)t} \ dt + \int_{0}^{\infty} e^{(-a-s)t} \ dt \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \int_{0}^{b} e^{(a-s)t} \ dt + \int_{0}^{b} e^{(-a-s)t} \ dt \right]
+\end{align*}
+Sustituyendo con \(u = (a-s)t \implies du = a-s\ dt\) y \(v = (-a-s)t \implies dv = -a-s\ dt\), obtenemos:
+\begin{align*}
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{a-s} \int_{0}^{(a-s)b} e^{u} \ du + \frac{1}{-a-s} \int_{0}^{(-a-s)b} e^{u} \ du \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{a-s} \left. \left( e^{u} \right) \right|_{0}^{(a-s)b} - \frac{1}{a+s} \left. \left( e^{u} \right) \right|_{0}^{(-a-s)b} \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{e^{(a-s)b} - 1}{a-s} - \frac{e^{(-a-s)b} - 1}{a+s} \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(a+s) e^{(a-s)b} - a - s - (a-s)e^{(-a-s)b} + a - s}{a^{2} - s ^{2}} \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(a+s) e^{(a-s)b} - 2s - (a-s)e^{(-a-s)b}}{a^{2}-s ^{2}} \right] \\
+	&= \frac{1}{2(a^{2}-s ^{2})} \left[ (a+s) \lim_{b \to \infty} e^{(a-s)b} + (a-s) \lim_{b \to \infty} e^{(-a-s)b} - 2s \right]
+\end{align*}
+Cuando \(s > a \implies (a-s) < 0 \land (-a-s) < 0\), por lo que podemos escribir:
+\begin{align*}
+	&= \frac{1}{2(a^{2}-s ^{2})} \left[ (a+s) \lim_{b \to -\infty} e^{b} + (a-s) \lim_{b \to -\infty} e^{b} - 2s \right] \\
+	&= \frac{1}{2(a^{2}-s ^{2})} \left[ (a+s) 0 + (a-s) 0 - 2s \right] \\
+	&= \frac{1}{2(a^{2}-s ^{2})} (-2s) \\
+	&= \frac{s}{s ^{2} - a^{2}}
+\end{align*}
+Así, finalmente:
+\[
+	\mathcal{L}\{\cosh(at)\} = \frac{s}{s ^{2} - a^{2}}
+\]
 
 \end{document}
