@@ -2,7 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{../auxiliary/utilities/preamble}
 
-\newcommand{\titulo}{Transformadas de Laplace}
+\newcommand{\titulo}{Tarea 3: Transformadas de Laplace}
 \newcommand{\fecha}{11 de febrero de 2024}
 
 \begin{document}
@@ -107,7 +107,7 @@ Calculamos la transformada de Laplace de \(f(t) = t^{n}\):
 \end{align*}
 Resolvamos esta integral por sustitución, utilizando \(u = st \implies du = s\ dt\):
 \begin{align} \label{eq:orig-laplace}
-    &=\lim_{b\to\infty} \frac{1}{s} \int_0^b e^{-u}\left(\frac{u}{s}\right)^n du \notag \\
+    &=\lim_{b\to\infty} \frac{1}{s} \int_{0}^{b} e^{-u} \left( \frac{u}{s} \right)^{n}\ du \notag \\
     &=\lim_{b\to\infty} \frac{1}{s^{n+1}} \int_0^b e^{-u} u^{n}\ du \notag \\
     &= \frac{1}{s^{n+1}} \lim_{b\to\infty} \int_0^b e^{-u} u^{n}\ du \notag \\
     &= \frac{1}{s^{n+1}} \int_0^\infty e^{-u} u^{n}\ du
@@ -214,14 +214,17 @@ Calculamos la transformada de Laplace de \(f(t) = \cos(t)\):
 Integrando por partes, utilizando \(u = \cos(t) \implies du = -\sin(t)\ dt\) y \(dv = e^{-st}\ dt \implies v = -\frac{1}{s} e^{-st}\), obtenemos:
 \begin{align*}
 	&= \lim_{b \to \infty} \left[ \left. \frac{-\cos (t) e^{-st}}{s} \right|_{0}^{b} - \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right] \\
-	&= \lim_{b \to \infty} \left[ - \frac{\cos (b) e^{-sb}}{s} + \frac{\cos (0) e^{0}}{s} \right] - \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right] \\
+	&= \lim_{b \to \infty} \left[ - \frac{\cos (b) e^{-sb}}{s} + \frac{\cos (0) e^{0}}{s} \right] - \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right]
+\end{align*}
+Cuando \(s > 0 \implies -s < 0\), por lo que, bajo ese supuesto, \(\lim_{b \to \infty} e^{-sb} = \lim_{b \to -\infty} e^{b} = 0\), obteniendo así:
+\begin{align*}
 	&= \frac{1}{s} - \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \sin (t) \ dt \right] \\
 	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (t) \ dt
 \end{align*}
 Una vez más, integrando por partes con \(u = \sin (t) \implies du = \cos (t)\ dt\) y \(dv = e^{-st}\ dt \implies v = -\frac{1}{s} e^{-st}\), tenemos:
 \begin{align*}
 	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \left[ \left. \frac{-\sin (t) e^{-st}}{s} \right|_{0}^{b} + \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \\
-	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \left[ - \frac{\sin (b) e^{-sb}}{s} + \frac{\sin (0) e^{0}}{s} \right] + \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \\
+	&= \frac{1}{s} - \frac{1}{s} \left( \lim_{b \to \infty} \left[ - \frac{\sin (b) e^{-sb}}{s} + \frac{\sin (0) e^{0}}{s} \right] + \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \right) \\
 	&= \frac{1}{s} - \frac{1}{s} \lim_{b \to \infty} \left[ \frac{1}{s} \int_{0}^{b} e^{-st} \cos (t)\ dt \right] \\
 	&= \frac{1}{s} - \frac{1}{s^{2}} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt
 \end{align*}
@@ -242,9 +245,52 @@ Estableciendo \(a = \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (t) \ dt\), te
 \end{align*}
 Por lo tanto, finalmente:
 \[
-	\mathcal{L}\{\cos (t)\} = \frac{s}{s ^{2} + 1}
+	\mathcal{L}\{\cos (t)\} = \frac{s}{s ^{2} + 1} \qquad s > 0
 \]
 
+\section{\texorpdfstring{\(f(t)=\sin(at)\)}{f (t) = sin (at)}}
+
+Calculamos la transformada de Laplace de \(f(t) = \sin(at)\):
+\begin{align*}
+	\mathcal{L}\{\sin (t)\} &= \int_{0}^{\infty} e^{-st} \sin(at)\ dt \\
+	&= \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin(at)\ dt
+\end{align*}
+Integrando por partes, utilizando \(u = \sin(at) \implies du = a \cos(at)\ dt\) y \(dv = e^{-st}\ dt \implies v = -\frac{1}{s} e^{-st}\), obtenemos:
+\begin{align*}
+	&= \lim_{b \to \infty} \left[ \left. \frac{-\sin (at) e^{-st}}{s} \right|_{0}^{b} + \frac{a}{s} \int_{0}^{b} e^{-st} \cos (at) \ dt \right] \\
+	&= \lim_{b \to \infty} \left[ - \frac{\sin (ab) e^{-sb}}{s} + \frac{\sin (0) e^{0}}{s} \right] + \lim_{b \to \infty} \left[ \frac{a}{s} \int_{0}^{b} e^{-st} \cos (at) \ dt \right]
+\end{align*}
+Cuando \(s > 0 \implies -s < 0\), por lo que, bajo ese supuesto, \(\lim_{b \to \infty} e^{-sb} = \lim_{b \to -\infty} e^{b} = 0\), obteniendo así:
+\begin{align*}
+	&= \lim_{b \to \infty} \left[ \frac{a}{s} \int_{0}^{b} e^{-st} \cos (at) \ dt \right] \\
+	&= \frac{a}{s} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \cos (at) \ dt
+\end{align*}
+Una vez más, integrando por partes con \(u = \cos (at) \implies du = - a\sin (at)\ dt\) y \(dv = e^{-st}\ dt \implies v = -\frac{1}{s} e^{-st}\), tenemos:
+\begin{align*}
+	&= \frac{a}{s} \lim_{b \to \infty} \left[ \left. \frac{-\cos (at) e^{-st}}{s} \right|_{0}^{b} - \frac{a}{s} \int_{0}^{b} e^{-st} \sin (at)\ dt \right] \\
+	&= \frac{a}{s} \left( \lim_{b \to \infty} \left[ - \frac{\cos (ab) e^{-sb}}{s} + \frac{\cos (0) e^{0}}{s} \right] - \lim_{b \to \infty} \left[ \frac{a}{s} \int_{0}^{b} e^{-st} \sin (at)\ dt \right] \right) \\
+	&= \frac{a}{s} \left( \frac{1}{s} - \lim_{b \to \infty} \left[ \frac{a}{s} \int_{0}^{b} e^{-st} \sin (at)\ dt \right] \right) \\
+	&= \frac{a}{s ^{2}} - \frac{a^{2}}{s ^{2}} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (at) \ dt
+\end{align*}
+Observemos que:
+\begin{align*}
+	\lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (at) \ dt &= \frac{a}{s ^{2}} - \frac{a^{2}}{s ^{2}} \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (at) \ dt
+\end{align*}
+Estableciendo \(c = \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (at) \ dt\), tenemos:
+\begin{align*}
+	c &= \frac{a}{s ^{2}} - \frac{a ^{2}}{s ^{2}} c \\
+	\implies c + \frac{a^{2}}{s ^{2}} c &= \frac{a}{s ^{2}} \\
+	\implies c \left( 1 + \frac{a ^{2}}{s ^{2}} \right) &= \frac{a}{s ^{2}} \\
+	\implies c \left( \frac{s ^{2} + a^{2}}{s ^{2}} \right) &= \frac{a}{s ^{2}} \\
+	\implies c &= \frac{as ^{2}}{s ^{2}(s ^{2}+a^{2})} \\
+	\implies c &= \frac{a}{a^{2} + s ^{2}} \\
+	\implies \lim_{b \to \infty} \int_{0}^{b} e^{-st} \sin (at) \ dt &= \frac{a}{a ^{2} + s ^{2}} \\
+	\implies \int_{0}^{\infty} e^{-st} \sin (at) \ dt &= \frac{a}{a^{2} + s ^{2}}
+\end{align*}
+Por lo tanto, finalmente:
+\[
+	\mathcal{L}\{\sin (at)\} = \frac{a}{a^{2} + s ^{2}} \qquad s > 0
+\]
 
 \setcounter{section}{10}
 \section{\texorpdfstring{\(f(t)=e^{4t}\)}{f (t) = e (4t) }}
