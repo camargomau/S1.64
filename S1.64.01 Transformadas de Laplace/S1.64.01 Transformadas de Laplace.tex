@@ -361,8 +361,8 @@ Recordemos que \(\sinh(u) = \frac{1}{2} (e^{u} - e^{-u})\), así que:
 \end{align*}
 Sustituyendo con \(u = (3-s)t \implies du = 3-s\ dt\) y \(v = (-3-s)t \implies dv = -3-s\ dt\), obtenemos:
 \begin{align*}
-	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{3-s} \int_{0}^{(3-s)b} e^{u} \ du - \frac{1}{-3-s} \int_{0}^{(-3-s)b} e^{u} \ du \right] \\
-	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{3-s} \left. \left( e^{u} \right) \right|_{0}^{(3-s)b} + \frac{1}{3+s} \left. \left( e^{u} \right) \right|_{0}^{(-3-s)b} \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{3-s} \int_{0}^{(3-s)b} e^{u} \ du - \frac{1}{-3-s} \int_{0}^{(-3-s)b} e^{v} \ dv \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{3-s} \left. \left( e^{v} \right) \right|_{0}^{(3-s)b} + \frac{1}{3+s} \left. \left( e^{u} \right) \right|_{0}^{(-3-s)b} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{e^{(3-s)b} - 1}{3-s} + \frac{e^{(-3-s)b} - 1}{3+s} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(3+s) e^{(3-s)b} - 3 - s + (3-s)e^{(-3-s)b} - 3 + s}{9-s ^{2}} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(3+s) e^{(3-s)b} - 6 + (3-s)e^{(-3-s)b}}{9-s ^{2}} \right] \\
@@ -396,8 +396,8 @@ Recordemos que \(\cosh(u) = \frac{1}{2} \left( e^{u} + e^{-u} \right) \), así q
 \end{align*}
 Sustituyendo con \(u = (6-s)t \implies du = 6-s\ dt\) y \(v = (-6-s)t \implies dv = -6-s\ dt\), obtenemos:
 \begin{align*}
-	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{6-s} \int_{0}^{(6-s)b} e^{u} \ du + \frac{1}{-6-s} \int_{0}^{(-6-s)b} e^{u} \ du \right] \\
-	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{6-s} \left. \left( e^{u} \right) \right|_{0}^{(6-s)b} - \frac{1}{6+s} \left. \left( e^{u} \right) \right|_{0}^{(-6-s)b} \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{6-s} \int_{0}^{(6-s)b} e^{u} \ du + \frac{1}{-6-s} \int_{0}^{(-6-s)b} e^{v} \ dv \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{6-s} \left. \left( e^{v} \right) \right|_{0}^{(6-s)b} - \frac{1}{6+s} \left. \left( e^{u} \right) \right|_{0}^{(-6-s)b} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{e^{(6-s)b} - 1}{6-s} - \frac{e^{(-6-s)b} - 1}{6+s} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(6+s) e^{(6-s)b} - 6 - s - (6-s)e^{(-6-s)b} + 6 - s}{36 - s ^{2}} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(6+s) e^{(6-s)b} - 2s - (6-s)e^{(-6-s)b}}{36-s ^{2}} \right] \\
@@ -431,8 +431,8 @@ Recordemos que \(\cosh(u) = \frac{1}{2} \left( e^{u} + e^{-u} \right) \), así q
 \end{align*}
 Sustituyendo con \(u = (a-s)t \implies du = a-s\ dt\) y \(v = (-a-s)t \implies dv = -a-s\ dt\), obtenemos:
 \begin{align*}
-	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{a-s} \int_{0}^{(a-s)b} e^{u} \ du + \frac{1}{-a-s} \int_{0}^{(-a-s)b} e^{u} \ du \right] \\
-	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{a-s} \left. \left( e^{u} \right) \right|_{0}^{(a-s)b} - \frac{1}{a+s} \left. \left( e^{u} \right) \right|_{0}^{(-a-s)b} \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{a-s} \int_{0}^{(a-s)b} e^{u} \ du + \frac{1}{-a-s} \int_{0}^{(-a-s)b} e^{v} \ dv \right] \\
+	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{1}{a-s} \left. \left( e^{v} \right) \right|_{0}^{(a-s)b} - \frac{1}{a+s} \left. \left( e^{u} \right) \right|_{0}^{(-a-s)b} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{e^{(a-s)b} - 1}{a-s} - \frac{e^{(-a-s)b} - 1}{a+s} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(a+s) e^{(a-s)b} - a - s - (a-s)e^{(-a-s)b} + a - s}{a^{2} - s ^{2}} \right] \\
 	&= \frac{1}{2} \lim_{b \to \infty} \left[ \frac{(a+s) e^{(a-s)b} - 2s - (a-s)e^{(-a-s)b}}{a^{2}-s ^{2}} \right] \\
