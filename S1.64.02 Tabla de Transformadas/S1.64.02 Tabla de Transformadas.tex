@@ -1,0 +1,42 @@
+
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{../auxiliary/utilities/preamble}
+\usepackage{booktabs}
+
+\newcommand{\titulo}{Tarea 2: Transformadas Integrales}
+\newcommand{\fecha}{11 de febrero de 2024}
+
+\begin{document}
+\sffamily
+\input{../auxiliary/utilities/cover}
+
+\newpage
+
+\begin{center}
+    \begin{tabular}{c c c c}
+        \toprule
+        Nombre & Notación & Transformada & Inversa \\
+        \midrule
+        \\ Fourier & \(\mathcal{F}\) & \( \int_{-\infty}^{\infty} \frac{e^{-ist}}{\sqrt{2\pi}}\ f(t) dt\)  & \(\int_{-\infty}^{\infty} \frac{e^{ist}}{\sqrt{2\pi}}f(t)\ dt\) \\ \\
+        \midrule
+        \\ Hartley & \(\mathcal{H}\) & \(\int_{-\infty}^{\infty}\frac{\cos{(st)}+\sin{(st)}}{\sqrt{2\pi}} f(t)\ dt\) & \(\int_{-\infty}^{\infty} \frac{\cos{(st)}+\sin{(st)}}{\sqrt{2\pi}} f(t)\ dt\) \\ \\
+        \midrule
+        \\ Mellin & \(\mathcal{M}\) & \(\int_{0}^{\infty} t^{s-1} f(t)\ dt \) & \(\int_{c-i\infty}^{c+i\infty} \frac{t^{-s}}{2\pi i} f(t)\ dt\) \\ \\
+        \midrule
+        \\ Laplace Bilateral & \(\mathcal{B}\) & \(\int_{-\infty}^{\infty} e^{-st} f(t)\ dt\) & \(\int_{c-i\infty}^{c+i\infty} \frac{e^{st}}{2\pi i} f(t)\ dt\) \\ \\
+        \midrule
+        \\ Laplace & \(\mathcal{L}\) & \(\int_0^{\infty} e^{-st} f(t)\ dt\) & \(\int_{c-i\infty}^{c+i\infty} \frac{e^{st}}{2\pi i} f(t)\ dt\) \\ \\
+        \midrule
+        \\ Hankel & – & \(\int_0^{\infty} tJ_v(st) f(t)\ dt\) & \(\int_{0}^{\infty} sJ_v(st) f(t)\ dt \) \\ && \\
+        \midrule
+        \\ Abel & – & \(\int_s^{\infty} \frac{2t}{\sqrt{t^2 - s^2}}f(t)\ dt\) & \(\int_t^{\infty} \frac{-1}{\pi\sqrt{s^2 - t^2}}\frac{d}{ds} f(t)\ dt\)\\ && \\
+        \midrule
+        \\ Lorentz & – & \(\int_s^{\infty} \frac{2t}{\sqrt{t^2 - s^2}}f(t)\ dt\) & \(\int_t^{\infty} \frac{-1}{\pi\sqrt{s^2 - t^2}}\frac{d}{ds} f(t)\ dt\)\\ & & \\
+        \midrule
+        \\ Hilbert & \(\mathcal{H}\) & \(\int_{-\infty}^{\infty} \frac{1}{\pi}\frac{1}{s-t} f(t)\ dt\) & \(\int_{-\infty}^{\infty} \frac{1}{\pi} \frac{1}{s-t} f(t)\ dt\) \\ && \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+\end{document}
