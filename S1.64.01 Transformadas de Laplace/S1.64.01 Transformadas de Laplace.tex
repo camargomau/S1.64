@@ -84,14 +84,11 @@ Sustituyendo todas estas expresiones donde corresponden, obtenemos:
     &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\left(-\frac{b^2e^{-sb}}{s}-\frac{2be^{-sb}}{s^2}-\frac{2e^{-sb}}{s^3}+\frac{2}{s^3}\right) \right] \\
     &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}-\frac{3b^2e^{-sb}}{s^2}-\frac{6be^{-sb}}{s^3}-\frac{6e^{-sb}}{s^4}+\frac{6}{s^4} \right] \\
     &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}-\frac{3b^2e^{-sb}}{s^2}-\frac{6be^{-sb}}{s^3}-\frac{6e^{-sb}}{s^4} \right] + \frac{6}{s^4} \\
-    &=\lim_{b\to\infty} \left[ e^{-sb} \left( -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right) \right] + \frac{6}{s^4} \\
-	&= \left( \lim_{b \to \infty} e^{-sb} \right) \left( \lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] \right) + \frac{6}{s^{4}}
+    &=\lim_{b\to\infty} \left[ e^{-sb} \left( -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right) \right] + \frac{6}{s^4}
 \end{align*}
-Observemos que cuando \(s > 0 \implies -s < 0\), por lo que podemos escribir
+Notemos que \(g(b) = e^{sb}\) cambia más rápidamente que \(h(b) = -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3}\), por lo que el límite seguirá la tendencia de \(\lim_{b \to \infty} e^{-sb} = 0\):
 \begin{align*}
-	&= \left( \lim_{b \to -\infty} e^{b} \right) \left( \lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] \right) + \frac{6}{s^{4}} \\
-	&= 0 \lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] + \frac{6}{s^{4}} \\
-    &= 0 + \frac{6}{s^4}\\
+	&= 0 + \frac{6}{s^{4}} \\
     &=\frac{6}{s^4} \\
 	&=\frac{3!}{s^4}
 \end{align*}
@@ -99,6 +96,8 @@ Con esto, finalmente:
 \[
 \mathcal{L}\{t^3\}=\frac{3!}{s^4} \qquad s > 0
 \]
+
+\section{\texorpdfstring{\(f(t)=t^n \)}{f (t) = t n}}
 
 \setcounter{section}{7}
 \section{\texorpdfstring{\(f(t)=\cos(t)\)}{f (t) = cos (t)}}
