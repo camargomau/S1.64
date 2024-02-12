@@ -9,6 +9,7 @@
 \sffamily
 \input{../auxiliary/utilities/cover}
 
+\tableofcontents
 \newpage
 
 \setcounter{section}{1}
@@ -86,7 +87,7 @@ Sustituyendo todas estas expresiones donde corresponden, obtenemos:
     &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}-\frac{3b^2e^{-sb}}{s^2}-\frac{6be^{-sb}}{s^3}-\frac{6e^{-sb}}{s^4} \right] + \frac{6}{s^4} \\
     &=\lim_{b\to\infty} \left[ e^{-sb} \left( -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right) \right] + \frac{6}{s^4}
 \end{align*}
-Notemos que \(g(b) = e^{sb}\) cambia más rápidamente que \(h(b) = -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3}\), por lo que el límite seguirá la tendencia de \(\lim_{b \to \infty} e^{-sb} = 0\):
+Notemos que \(g(b) = e^{-sb}\) cambia más rápidamente que \(h(b) = -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3}\), por lo que el límite seguirá la tendencia de \(\lim_{b \to \infty} e^{-sb} = 0\) y no la de \(\lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] = \infty \):
 \begin{align*}
 	&= 0 + \frac{6}{s^{4}} \\
     &=\frac{6}{s^4} \\
@@ -98,6 +99,109 @@ Con esto, finalmente:
 \]
 
 \section{\texorpdfstring{\(f(t)=t^n \)}{f (t) = t n}}
+
+Calculamos la transformada de Laplace de \(f(t) = t^{n}\):
+\begin{align*}
+    \mathcal{L}\{t^n\}&=\int_0^\infty e^{-st}t^n\ dt\\
+    &=\lim_{b\to\infty}\int_0^b e^{-st}t^n\ dt
+\end{align*}
+Resolvamos esta integral por sustitución, utilizando \(u = st \implies du = s\ dt\):
+\begin{align} \label{eq:orig-laplace}
+    &=\lim_{b\to\infty} \frac{1}{s} \int_0^b e^{-u}\left(\frac{u}{s}\right)^n du \notag \\
+    &=\lim_{b\to\infty} \frac{1}{s^{n+1}} \int_0^b e^{-u} u^{n}\ du \notag \\
+    &= \frac{1}{s^{n+1}} \lim_{b\to\infty} \int_0^b e^{-u} u^{n}\ du \notag \\
+    &= \frac{1}{s^{n+1}} \int_0^\infty e^{-u} u^{n}\ du
+\end{align}
+A partir de este punto, para poder continuar hará falta demostrar que lo siguiente se cumple:
+\begin{equation} \label{eq:n-fact}
+    \int_0^\infty e^{-x}x^n\ dx = n! \qquad \forall n \in \mathbb{N}
+\end{equation}
+
+\subsection{Caso base \texorpdfstring{\(n = 0\)}{n = 0}}
+
+Demostremos por inducción. Iniciemos con el caso base cuando \(n = 0\):
+\begin{align*}
+	\int_0^\infty e^{-x}x^0dx&=\lim_{b\to\infty}\int_0^b e^{-x}x^0dx\\
+	&=\lim_{b\to\infty}\int_0^b e^{-x}dx\\
+	&=\lim_{b\to\infty} \left[ \left. \left( -e^{-x} \right) \right|_0^b \right] \\
+	&=\lim_{b\to\infty} \left[ -e^{-b}+e^{0} \right] \\
+	&= - \lim_{b\to- \infty} e^{b} + 1 \\
+	&= 0+1 \\
+	&= 1 \\
+	&= 0!
+\end{align*}
+
+\subsection{Hipótesis de Inducción (\texorpdfstring{\(n = k\)}{n = k})}
+
+Establezcamos como hipótesis de inducción que la igualdad se cumple con \(n = k\), dada una \(k \in \mathbb{N} \) particular:
+\[
+    \int_0^\infty e^{-x}x^k \ dx = k!
+\]
+
+\subsection{Caso (\texorpdfstring{\(n = k+1\)}{n = k+1})}
+
+Para finalizar la demostración, dado el caso base y la hipótesis de inducción, hace falta demostrar que se cumple la igualdad con \(n = k+1\); por demostrar:
+\begin{equation} \label{eq:caso-demostrar}
+\int_0^\infty e^{-x}x^{k+1}\ dx=(k+1)!
+\end{equation}
+Iniciamos expresando la integral impropia como el límite de una integral:
+\begin{align*}
+	\int_0^\infty e^{-x}x^{k+1}\ dx &= \lim_{b\to\infty}\int_0^b e^{-x}x^{k+1}\ dx
+\end{align*}
+Ahora, integramos por partes utilizando \(u=x^{k+1}\implies du=(k+1)x^k\ dx\) y \(dv=e^{-x}\ dx\implies v=-e^{-x}\), obteniendo:
+\begin{align*}
+	&= \lim_{b \to \infty} \left[ \left. \left( -x^{k+1} e^{-x} \right) \right|_{0}^{b} + (k+1) \int_{0}^{b} e^{-x} x^{k} \ dx \right]
+\end{align*}
+Observemos que podemos utilizar la hipótesis de inducción:
+\begin{align} \label{eq:antes-limite}
+	&= \lim_{b \to \infty} \left[ \left. \left( -x^{k+1} e^{-x} \right) \right|_{0}^{b} + (k+1) k! \right] \notag \\
+	&= \lim_{b \to \infty} \left[ \left( -b^{k+1} e^{-b} + 0^{k+1} e^{0} \right) + (k+1) k! \right] \notag \\
+	&= \lim_{b \to \infty} \left[ \left( -b^{k+1} e^{-b} \right) + (k+1) k! \right] \notag \\
+	&= -\lim_{b \to \infty} b^{k+1} e^{-b} + (k+1) k!
+\end{align}
+Notemos que podemos reescribir el límite de la siguiente forma:
+\begin{align*}
+	\lim_{b \to \infty} b^{k+1} e^{-b} &= \lim_{b \to \infty} \frac{b^{k+1}}{e^{b}}
+\end{align*}
+Este límite se indetermina, pero podemos utilizar la regla de l'Hôpital:
+\begin{align*}
+	\lim_{b \to \infty} b^{k+1} e^{-b} &= \lim_{b \to \infty} \frac{\frac{d}{db} \left( b^{k+1} \right)}{\frac{d}{db} \left( e^{b} \right)} \\
+	&= \lim_{b \to \infty} \frac{(k+1)b^{k}}{e^{b}} \\
+	&= (k+1) \lim_{b \to \infty} \frac{b^{k}}{e^{b}}
+\end{align*}
+Este límite también se indetermina, así que continuemos utilizando la regla de l'Hôpital:
+\begin{align*}
+	\lim_{b \to \infty} b^{k+1} e^{-b} &= (k+1) \lim_{b \to \infty} \frac{\frac{d}{db} \left( b^{k} \right)}{\frac{d}{db} \left( e^{b} \right)} \\
+	&= (k+1) \lim_{b \to \infty} \frac{kb^{k-1}}{e^{b}} \\
+	&= (k+1)k \lim_{b \to \infty} \frac{b^{k-1}}{e^{b}}
+\end{align*}
+Una vez más, este límite se indetermina, pero notemos que las derivadas del numerador seguirán el mismo patrón hasta alcanzar \(\frac{d}{db} (b) = 1\), con los exponentes acumulándose como un producto que escala al límite:
+\begin{align*}
+	\lim_{b \to \infty} b^{k+1} e^{-b} &= (k+1)k(k-1)(k-2)(\dots) \lim_{b \to \infty} \frac{\frac{d}{db} (b)}{\frac{d}{db} \left( e^{b} \right)} \\
+	&= (k+1)! \lim_{b \to \infty} \frac{1}{e^{b}} \\
+	&= (k+1)! \lim_{b \to \infty} e^{-b} \\
+	&= (k+1)! \lim_{b \to -\infty} e^{b} \\
+	&= (k+1)! (0) \\
+	&= 0
+\end{align*}
+En otras palabras, como \(g(b) = e^{-b}\) cambia más rápidamente que \(h(b) = b^{k+1}\), el límite sigue la tendencia de \(\lim_{b \to \infty} g(b) = 0\) y no la de \(\lim_{b \to \infty} h(b) = \infty\).
+
+Regresando a (\ref{eq:antes-limite}), entonces:
+\begin{align*}
+	\int_{0}^{\infty} e^{-x} x^{k+1} \ dx &= 0 + (k+1) k! \\
+	&= (k+1)!
+\end{align*}
+Esto es igual que (\ref{eq:caso-demostrar}), así que efectivamente hemos podido demostrar por inducción que (\ref{eq:n-fact}) se cumple \(\forall n \in \mathbb{N}\).
+
+Con ello, podemos regresar a (\ref{eq:orig-laplace}):
+\begin{align*}
+	\mathcal{L}\{t^{n}\} &= \frac{1}{s^{n+1}} (n!) \\
+	&= \frac{n!}{s^{n+1}}
+\end{align*}
+Por lo tanto, finalmente:
+\[
+\mathcal{L}\{t^n\}=\frac{n!}{s^{n+1}}
+\]
 
 \setcounter{section}{7}
 \section{\texorpdfstring{\(f(t)=\cos(t)\)}{f (t) = cos (t)}}
