@@ -19,7 +19,7 @@ Calculamos la transformada de Laplace de \(f(t) = c\):
     \mathcal{L}\{c\}&=\int_0^{\infty}e^{-st}(c)\\
     &=\int_0^{\infty}ce^{-st}\\
     &=c\int_0^{\infty}e^{-st}\\
-    &=\lim_{b\to\infty}c\int_0^be^{-st}\ dt
+    &=\lim_{b\to\infty}c\int_0^b e^{-st}\ dt
 \end{align*}
 Sustiuimos con \(u=-st \implies du =-s\ dt\), obteniendo:
 \begin{align*}
@@ -36,7 +36,68 @@ Cuando \(s > 0 \implies -s < 0\), por lo que podemos escribir:
 \end{align*}
 Así, finalmente:
 \[
-\mathcal{L}\{c\}=\frac{c}{s}
+\mathcal{L}\{c\}=\frac{c}{s} \qquad s > 0
+\]
+
+\setcounter{section}{4}
+\section{\texorpdfstring{\(f(t) = t^3\)}{f (t) = t 3}}
+
+Calculamos la transformada de Laplace de \(f(t) = t^{3}\):
+\begin{align} \label{eq:primera-exp}
+    \mathcal{L}\{t^3\}&=\int_0^\infty e^{-st}t^3\ dt\ \notag \\
+    &=\lim_{b\to\infty}\int_0^b e^{-st}t^3\ dt
+\end{align}
+Enfoquémonos en la integral en sí. Para resolverla, integramos por partes, utilizando \(u= t^3 \implies du= 3t^2\ dt\) y \(dv=e^{-st}\ dt \implies v=-\frac{1}{s}e^{-st}\):
+\begin{align} \label{eq:primera-int}
+    \int_0^b e^{-st}t^3\ dt &= \left. \left( -\frac{t^3 e^{-st}}{s}\right) \right|_0^b + \frac{3}{s} \int_0^b e^{-st}t^2 \ dt \notag \\
+    &= \left( -\frac{b^3e^{-sb}}{s}+\frac{0}{s} \right) +\frac{3}{s}\int_0^b e^{-st}t^2\ dt \notag \\
+    &=-\frac{b^3e^{-sb}}{s} + \frac{3}{s}\int_0^b e^{-st}t^2\ dt
+\end{align}
+Observemos que tenemos otra integral. Resolvámosla también por partes, utilizando \(u=t^2\implies du=2t\ dt\) y \(dv=e^{-st}dt\implies v=-\frac{1}{s}e^{-st}\):
+\begin{align} \label{eq:segunda-int}
+    \int_0^b e^{-st}t^2\ dt&= \left. \left( -\frac{t^2 e^{-st}}{s} \right) \right|_0^b + \frac{2}{s} \int_0^b e^{-st}t\ dt \notag \\
+    &= \left( -\frac{b^2e^{-sb}}{s}+\frac{0}{s} \right) + \frac{2}{s} \int_0^b e^{-st}t \ dt \notag \\
+    &=-\frac{b^2e^{-sb}}{s}+\frac{2}{s}\int_0^b e^{-st}t \ dt \notag \\
+    &=-\frac{b^2e^{-sb}}{s}+\frac{2}{s}\int_0^b e^{-st}t \ dt
+\end{align}
+Una vez más, tenemos otra integral. Otra vez resolvamos por partes utilizando \(u=t\implies du=dt\) y \(dv=e^{-st}\ dt\implies v=-\frac{1}{s}e^{-st}\), obteniendo:
+\begin{align} \label{eq:tercera-int}
+    \int_0^b e^{-st}t\ dt &= \left. \left(-\frac{te^{-st}}{s} \right) \right|_0^b + \frac{1}{s} \int_0^b e^{-st}\ dt \notag \\
+    &= \left( -\frac{be^{-sb}}{s}+\frac{0}{s} \right) +\frac{1}{s} \int_0^b e^{-st}\ dt \notag \\
+    &=-\frac{be^{-sb}}{s}+\frac{1}{s}\int_0^b e^{-st}\ dt
+\end{align}
+Tenemos una última integral, pero esta vez la resolveremos con una sustitución \(u = -st \implies du = -s\ dt\), obteniendo:
+\begin{align} \label{eq:cuarta-int}
+    \int_0^b e^{-st}\ dt&=-\frac{1}{s}\int_0^{-sb} e^u\ du \notag \\
+    &=-\frac{1}{s} \left. \left( e^u \right) \right|_0^{-sb} \notag \\
+    &=-\frac{e^{-sb}}{s}+\frac{e^{-s(0)}}{s} \notag \\
+    &=-\frac{e^{-sb}}{s}+\frac{1}{s}
+\end{align}
+Sustituyendo todas estas expresiones donde corresponden, obtenemos:
+\begin{align*}
+    \mathcal{L}\{t^3\} &= \lim_{b\to\infty}\int_0^b e^{-st}t^3\ dt & (\ref{eq:primera-exp}) \\
+	&=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\int_0^b e^{-st}t^2\ dt \right] & \text{sust. } (\ref{eq:primera-int}) \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\left(-\frac{b^2e^{-sb}}{s}+\frac{2}{s}\int_0^b e^{-st}t\ dt\right) \right] & \text{sust. } (\ref{eq:segunda-int}) \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\left(-\frac{b^2e^{-sb}}{s}+\frac{2}{s}\left[-\frac{be^{-sb}}{s}+\frac{1}{s}\int_0^b e^{-st}dt\right]\right) \right] & \text{sust. } (\ref{eq:tercera-int}) \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\left(-\frac{b^2e^{-sb}}{s}+\frac{2}{s}\left[-\frac{be^{-sb}}{s}+\frac{1}{s}\left(-\frac{e^{-sb}}{s}+\frac{1}{s}\right)\right]\right) \right] & \text{sust. } (\ref{eq:cuarta-int}) \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\left(-\frac{b^2e^{-sb}}{s}+\frac{2}{s}\left[-\frac{be^{-sb}}{s}-\frac{e^{-sb}}{s^2}+\frac{1}{s^2}\right]\right) \right] \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}+\frac{3}{s}\left(-\frac{b^2e^{-sb}}{s}-\frac{2be^{-sb}}{s^2}-\frac{2e^{-sb}}{s^3}+\frac{2}{s^3}\right) \right] \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}-\frac{3b^2e^{-sb}}{s^2}-\frac{6be^{-sb}}{s^3}-\frac{6e^{-sb}}{s^4}+\frac{6}{s^4} \right] \\
+    &=\lim_{b\to\infty} \left[ -\frac{b^3e^{-sb}}{s}-\frac{3b^2e^{-sb}}{s^2}-\frac{6be^{-sb}}{s^3}-\frac{6e^{-sb}}{s^4} \right] + \frac{6}{s^4} \\
+    &=\lim_{b\to\infty} \left[ e^{-sb} \left( -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right) \right] + \frac{6}{s^4} \\
+	&= \left( \lim_{b \to \infty} e^{-sb} \right) \left( \lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] \right) + \frac{6}{s^{4}}
+\end{align*}
+Observemos que cuando \(s > 0 \implies -s < 0\), por lo que podemos escribir
+\begin{align*}
+	&= \left( \lim_{b \to -\infty} e^{b} \right) \left( \lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] \right) + \frac{6}{s^{4}} \\
+	&= 0 \lim_{b \to \infty} \left[ -\frac{b^3}{s}-\frac{3b^2}{s^2}-\frac{6b}{s^3} \right] + \frac{6}{s^{4}} \\
+    &= 0 + \frac{6}{s^4}\\
+    &=\frac{6}{s^4} \\
+	&=\frac{3!}{s^4}
+\end{align*}
+Con esto, finalmente:
+\[
+\mathcal{L}\{t^3\}=\frac{3!}{s^4} \qquad s > 0
 \]
 
 \setcounter{section}{7}
